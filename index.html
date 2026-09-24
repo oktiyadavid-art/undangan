@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Oktiya & David</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #8b6b43;
+            --accent: #d4af37;
+            --dark: #2c2523;
+            --light: #fffdfa;
+            --font-serif: 'Cinzel', serif;
+            --font-script: 'Great Vibes', cursive;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--dark);
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .mobile-wrapper {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--light);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Cover Screen Overlay */
+        #cover-screen {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 480px;
+            height: 100vh;
+            z-index: 999;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://i.ibb.co.com/8gsv49J4/DSC00849.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 20px 40px;
+            text-align: center;
+            color: #fff;
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+        }
+
+        #cover-screen.hide {
+            transform: translate(-50%, -100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .cover-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+        }
+
+        .cover-names {
+            font-family: var(--font-script);
+            font-size: 3.5rem;
+            margin: 10px 0;
+            color: var(--accent);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .cover-date {
+            font-family: var(--font-serif);
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+        }
+
+        .btn-open {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            margin-top: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Section Styling & Variasi Background */
+        section {
+            padding: 60px 20px;
+            position: relative;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .bg-1 { background-image: linear-gradient(rgba(255,253,250,0.88), rgba(255,253,250,0.88)), url('https://i.ibb.co.com/dwzRmHKh/file-00000000fb6881fd8a82bcfbae963db7.png'); }
+        .bg-2 { background-image: linear-gradient(rgba(255,253,250,0.88), rgba(255,253,250,0.88)), url('https://i.ibb.co.com/yFC3rs17/file-00000000721c81f8aa580d62e2b5d045.png'); }
+        .bg-3 { background-image: linear-gradient(rgba(255,253,250,0.88), rgba(255,253,250,0.88)), url('https://i.ibb.co.com/GX105xF/file-00000000a1748209ae903fc843daaeb3.png'); }
+        .bg-4 { background-image: linear-gradient(rgba(255,253,250,0.88), rgba(255,253,250,0.88)), url('https://i.ibb.co.com/gLq8k2b6/file-000000008468820b89dbdc85d7c1a8bb.png'); }
+        .bg-5 { background-image: linear-gradient(rgba(255,253,250,0.88), rgba(255,253,250,0.88)), url('https://i.ibb.co.com/qF4TKNF3/file-00000000d214820789eeb88778e93d02.png'); }
+
+        .ornament {
+            width: 120px;
+            max-width: 50%;
+            height: auto;
+            margin: 15px auto;
+            display: block;
+        }
+
+        h2 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--primary);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .couple-name {
+            font-family: var(--font-script);
+            font-size: 3rem;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+
+        .video-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            margin: 20px 0;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 15px auto;
+        }
+
+        .story-card, .event-card {
+            background: rgba(255, 255, 255, 0.75);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            margin: 20px 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Countdown Klasik */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .countdown-box {
+            background: rgba(139, 107, 67, 0.1);
+            border: 1px solid var(--primary);
+            padding: 10px;
+            border-radius: 8px;
+            min-width: 65px;
+        }
+
+        .countdown-number {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .countdown-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Galeri Moment Estetik */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-grid img:first-child {
+            grid-column: span 2;
+            height: 240px;
+        }
+
+        .btn-link {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn-link:hover {
+            background: var(--dark);
+        }
+
+        .ig-link {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        .gift-box {
+            background: rgba(255,255,255,0.85);
+            border: 1px solid var(--accent);
+            padding: 18px;
+            border-radius: 12px;
+            margin: 12px auto;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        #music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            background: var(--accent);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Audio Element -->
+    <audio id="wedding-audio" loop preload="auto">
+        <source src="https://files.catbox.moe/7fxr61.mp4" type="audio/mp4">
+    </audio>
+
+    <!-- Floating Audio Control -->
+    <div id="music-control" onclick="toggleAudio()">
+        <i class="fas fa-music" id="music-icon"></i>
+    </div>
+
+    <div class="mobile-wrapper">
+
+        <!-- COVER OVERLAY -->
+        <div id="cover-screen">
+            <div data-aos="fade-down" data-aos-duration="1000">
+                <p class="cover-title">THE WEDDING OF</p>
+                <h1 class="cover-names">Oktiya & David</h1>
+                <p class="cover-date">25 • 10 • 2026</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <p style="font-size: 0.85rem; margin-bottom: 5px;">Kepada Yth.</p>
+                <p style="font-size: 1rem; font-weight: 600; margin-bottom: 15px;">Bapak/Ibu/Saudara/i</p>
+                <button class="btn-open" onclick="openWedding()">
+                    <i class="fas fa-envelope-open me-2"></i> Buka Undangan
+                </button>
+                <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.8;">Mohon maaf apabila terdapat kesalahan penulisan nama/gelar.</p>
+            </div>
+        </div>
+
+        <!-- HERO SECTION -->
+        <section class="bg-1">
+            <img src="https://i.ibb.co.com/VYtV9CQh/1789132946814.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+            
+            <div class="video-container" data-aos="fade-up" data-aos-duration="1000">
+                <video autoplay loop muted playsinline>
+                    <source src="https://files.catbox.moe/fro5e1.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <h2 data-aos="fade-up">THE WEDDING OF</h2>
+            <h1 class="couple-name" data-aos="zoom-in">Oktiya & David</h1>
+            <p style="font-family: var(--font-serif); font-weight: bold;" data-aos="fade-up">Minggu, 25 Oktober 2026</p>
+            
+            <img src="https://i.ibb.co.com/pBbfCmwF/1789132979788.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+            <p style="font-style: italic; font-size: 0.85rem;" data-aos="fade-up">✦ Sak langkah, sak tujuan, saklawase bebarengan. ✦</p>
+        </section>
+
+        <!-- DOA & RESTU -->
+        <section class="bg-2">
+            <img src="https://i.ibb.co.com/4ZGjscdQ/1789133009806.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+            <h2 data-aos="fade-up">DOA & RESTU</h2>
+            
+            <p style="font-size: 0.85rem; margin: 15px 0; font-style: italic;" data-aos="fade-up">
+                “Semoga Allah menghimpun yang terserak dari keduanya, memberkati mereka berdua, meningkatkan kualitas keturunan mereka, menjadikan pembuka pintu-pintu rahmat, sumber ilmu dan hikmah, serta pemberi rasa aman bagi umat.”
+            </p>
+            <p style="font-size: 0.75rem; color: #666;" data-aos="fade-up">– Doa yang dinisbatkan pada pernikahan Fatimah Az-Zahra dan Ali bin Abi Thalib</p>
+
+            <div style="margin: 30px 0 15px;" data-aos="fade-up">
+                <p style="font-size: 1.3rem; margin-bottom: 10px;">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                <p style="font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;">ASSALAMUALAIKUM WARAHMATULLAHI WABARAKATUH</p>
+            </div>
+
+            <p style="font-size: 0.85rem; line-height: 1.6;" data-aos="fade-up">
+                Dengan memohon ridha Allah SWT dan dengan penuh rasa syukur atas segala karunia-Nya, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu pada pernikahan kami.
+                <br><br>
+                Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk menjadi bagian dari hari istimewa kami.
+            </p>
+        </section>
+
+        <!-- MEMPELAI SECTION -->
+        <section class="bg-3">
+            <img src="https://i.ibb.co.com/ns2JjnLt/1789133035179.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+            
+            <!-- Mempelai Wanita -->
+            <div data-aos="flip-left" data-aos-duration="1000">
+                <img src="https://i.ibb.co.com/9kjMBgWy/DSC00951.jpg" class="profile-img" alt="Oktiya Dwi Riyani">
+                <p style="font-size: 0.8rem; letter-spacing: 2px;">THE BRIDE</p>
+                <h3 class="couple-name" style="font-size: 2.2rem;">Oktiya Dwi Riyani</h3>
+                <p style="font-size: 0.85rem;">Putri dari<br><b>Bapak Parmin & Ibu Sumini</b></p>
+                <a href="https://www.instagram.com/oktiyadwi?stkn=cHFoZXg5MGVkbjI0" target="_blank" class="ig-link"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <div style="font-family: var(--font-script); font-size: 2.5rem; margin: 20px 0; color: var(--accent);" data-aos="zoom-in">&</div>
+
+            <!-- Mempelai Pria -->
+            <div data-aos="flip-right" data-aos-duration="1000">
+                <img src="https://i.ibb.co.com/F4x7nnvV/DSC01003.jpg" class="profile-img" alt="David Arya Maulana">
+                <p style="font-size: 0.8rem; letter-spacing: 2px;">THE GROOM</p>
+                <h3 class="couple-name" style="font-size: 2.2rem;">David Arya Maulana</h3>
+                <p style="font-size: 0.85rem;">Putra dari<br><b>Bapak Agus Susanto & Ibu Ratna Sulastri</b></p>
+                <a href="https://www.instagram.com/david_xixi?stkn=eGI4d3pleTM3dGJ6" target="_blank" class="ig-link"><i class="fab fa-instagram"></i></a>
+            </div>
+            
+            <img src="https://i.ibb.co.com/4wmSVzGZ/1789133071263.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+        </section>
+
+        <!-- OUR STORY -->
+        <section class="bg-4">
+            <img src="https://i.ibb.co.com/1f29VyFt/1789133935970.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+            <h2 data-aos="fade-up">OUR STORY</h2>
+            
+            <div class="story-card" data-aos="fade-up" data-aos-duration="1000">
+                <p style="font-weight: 600; margin-bottom: 10px;">Berawal dari sebuah pertemuan sederhana...</p>
+                <p>Tidak pernah disangka, sebuah tempat yang setiap harinya dipenuhi kendaraan dan kesibukan justru menjadi awal dari sebuah cerita.</p>
+                <br>
+                <p>Di sebuah SPBU, Oktiya menjalani kesehariannya sebagai seorang operator. Di tempat yang sama, David datang sebagai seorang sopir truk.</p>
+                <br>
+                <p>Awalnya, pertemuan mereka hanyalah sebuah perjumpaan sederhana dalam rutinitas sehari-hari. Tidak ada yang menyangka bahwa dari pertemuan-pertemuan kecil tersebut, perlahan tumbuh sebuah kedekatan yang membawa mereka pada perjalanan yang lebih berarti.</p>
+                <br>
+                <p>Hingga akhirnya, dua insan yang dipertemukan di tempat yang tidak pernah mereka sangka, memilih untuk melangkah bersama dalam sebuah ikatan yang lebih sakral.</p>
+                <br>
+                <p style="font-weight: 600; color: var(--primary);">Dari sebuah pertemuan di SPBU, menuju sebuah perjalanan seumur hidup.</p>
+            </div>
+
+            <p style="font-style: italic; font-size: 0.85rem; color: var(--primary);" data-aos="fade-up">
+                “Jodoh tidak selalu datang dengan cara yang kita rencanakan. Kadang, Allah mempertemukan dua hati melalui sebuah pertemuan sederhana, lalu menjadikannya awal dari cerita yang luar biasa.”
+            </p>
+        </section>
+
+        <!-- DETAIL ACARA & COUNTDOWN -->
+        <section class="bg-5">
+            <img src="https://i.ibb.co.com/zhpP9Cz8/1789133980065.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+            <h2 data-aos="fade-up">THE WEDDING DAY</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 10px;" data-aos="fade-up">Hari Bahagia Pasangan David & Oktiya</p>
+            <p style="font-size: 0.85rem; font-weight: 600; color: var(--primary);" data-aos="fade-up">Minggu, 25 Oktober 2026</p>
+
+            <!-- Countdown Timer Classic -->
+            <div class="countdown-container" id="countdown" data-aos="zoom-in">
+                <div class="countdown-box">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Hari</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Jam</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Menit</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Detik</div>
+                </div>
+            </div>
+
+            <img src="https://i.ibb.co.com/yFCBVgHm/1789648673458.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+
+            <h2 style="font-size: 1.2rem; margin-top: 10px;" data-aos="fade-up">BERTEMPAT DI</h2>
+
+            <!-- Event Sesi 1 -->
+            <div class="event-card" data-aos="fade-up">
+                <span style="background: var(--primary); color: #fff; padding: 4px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: 600;">SESI PAGI</span>
+                <h3 style="font-family: var(--font-serif); font-size: 1rem; color: var(--primary); margin-top: 8px;">KEDIAMAN MEMPELAI WANITA</h3>
+                <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent); margin: 4px 0;"><i class="far fa-clock me-1"></i> Pukul 09.00 WIB s/d Selesai</p>
+                <p style="font-size: 0.85rem; margin-top: 5px;">
+                    Dsn. Kwagean, Desa Sugihan, Kec. Tengaran, Kab. Semarang (RT. 29 / RW. 07)
+                </p>
+                <a href="https://maps.app.goo.gl/hoRpu5Ke3PVtbz5k7?g_st=ac" target="_blank" class="btn-link">
+                    <i class="fas fa-map-marker-alt me-2"></i> Lihat Lokasi (Wanita)
+                </a>
+            </div>
+
+            <!-- Event Sesi 2 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="150">
+                <span style="background: var(--accent); color: #fff; padding: 4px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: 600;">SESI SIANG</span>
+                <h3 style="font-family: var(--font-serif); font-size: 1rem; color: var(--primary); margin-top: 8px;">KEDIAMAN MEMPELAI PRIA</h3>
+                <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent); margin: 4px 0;"><i class="far fa-clock me-1"></i> Pukul 13.00 WIB s/d Selesai</p>
+                <p style="font-size: 0.85rem; margin-top: 5px;">
+                    Sruwen 01, RT.01/RW.01 Kec. Tengaran, Kab. Semarang
+                </p>
+                <a href="https://maps.app.goo.gl/ofFb1Y37VVui7Qto8?g_st=ac" target="_blank" class="btn-link">
+                    <i class="fas fa-map-marker-alt me-2"></i> Lihat Lokasi (Pria)
+                </a>
+            </div>
+        </section>
+
+        <!-- OUR MOMENTS GALLERY -->
+        <section class="bg-1">
+            <img src="https://i.ibb.co.com/F41SR3gW/1789648724482.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+            <h2 data-aos="fade-up">OUR MOMENTS</h2>
+            <p style="font-size: 0.85rem; font-style: italic;" data-aos="fade-up">Sebuah Cerita, Sebuah Kenangan</p>
+
+            <div class="gallery-grid">
+                <img src="https://i.ibb.co.com/JWs54Y0b/DSC00891.jpg" alt="Moment 1" data-aos="zoom-in">
+                <img src="https://i.ibb.co.com/k6cJsRFm/DSC00905-1.jpg" alt="Moment 2" data-aos="fade-right">
+                <img src="https://i.ibb.co.com/8gsv49J4/DSC00849.jpg" alt="Moment 3" data-aos="fade-left">
+                <img src="https://i.ibb.co.com/Hf6Wpc6P/DSC00800.jpg" alt="Moment 4" data-aos="fade-right">
+                <img src="https://i.ibb.co.com/WvrTTh8H/DSC00770.jpg" alt="Moment 5" data-aos="fade-left">
+            </div>
+            
+            <img src="https://i.ibb.co.com/60R725cx/1789648768056.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+        </section>
+
+        <!-- KONFIRMASI KEHADIRAN & UCAPAN -->
+        <section class="bg-2">
+            <img src="https://i.ibb.co.com/1YC5ZGh5/1789648793052.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+            <h2 data-aos="fade-up">RSVP & UCAPAN</h2>
+            <p style="font-size: 0.85rem; margin-bottom: 15px;" data-aos="fade-up">
+                Kehadiran dan doa restu Bapak/Ibu/Saudara/i merupakan kebahagiaan yang sangat berarti bagi kami.
+            </p>
+
+            <a href="https://wa.me/6285726208144?text=Halo%20Oktiya%20%26%20David,%20saya%20ingin%20konfirmasi%20kehadiran%20dan%20mengucapkan%20selamat." target="_blank" class="btn-link" style="background: #25D366; font-weight: 600; padding: 12px 24px;" data-aos="zoom-in">
+                <i class="fab fa-whatsapp me-2"></i> Konfirmasi Kehadiran
+            </a>
+
+            <div style="margin-top: 30px;" data-aos="fade-up">
+                <p style="font-family: var(--font-serif); font-size: 1rem; color: var(--primary);">UCAPAN & DOA</p>
+                <p style="font-size: 0.8rem; color: #666; font-style: italic; margin-top: 5px;">
+                    "Doa Baik untuk Kami"<br>
+                    Doa dan ucapan baik dari Bapak/Ibu/Saudara/i akan menjadi bagian dari kenangan indah di awal perjalanan rumah tangga kami.
+                </p>
+            </div>
+        </section>
+
+        <!-- DIGITAL GIFT -->
+        <section class="bg-3">
+            <img src="https://i.ibb.co.com/PZqmt7Fr/1789648832665.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+            <h2 data-aos="fade-up">DIGITAL GIFT</h2>
+            <p style="font-size: 0.85rem; font-weight: 600; color: var(--primary);" data-aos="fade-up">Tanda Kasih</p>
+            <p style="font-size: 0.8rem; margin-bottom: 15px;" data-aos="fade-up">
+                Bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih secara digital, dapat melalui:
+            </p>
+
+            <div class="gift-box" data-aos="flip-up">
+                <p style="font-weight: bold; color: var(--primary);">Maybank</p>
+                <p style="font-size: 1.2rem; font-family: var(--font-serif); margin: 5px 0; letter-spacing: 1px;">8720035075</p>
+                <p style="font-size: 0.85rem;">a.n. Oktiya Dwi Riyani</p>
+            </div>
+
+            <div class="gift-box" data-aos="flip-up" data-aos-delay="150">
+                <p style="font-weight: bold; color: var(--primary);">BRI</p>
+                <p style="font-size: 1.2rem; font-family: var(--font-serif); margin: 5px 0; letter-spacing: 1px;">604301044601535</p>
+                <p style="font-size: 0.85rem;">a.n. David Arya Maulana</p>
+            </div>
+            
+            <img src="https://i.ibb.co.com/x8dXK0Yz/1789648885481.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+        </section>
+
+        <!-- MATUR NUWUN / PENUTUP -->
+        <section class="bg-4">
+            <img src="https://i.ibb.co.com/1tqwQLhN/1789648924420.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+            <h2 data-aos="fade-up">MATUR NUWUN</h2>
+            <p style="font-size: 0.85rem; font-weight: 600; color: var(--primary);" data-aos="fade-up">Terima Kasih</p>
+            <p style="font-size: 0.85rem; line-height: 1.6; margin: 15px 0;" data-aos="fade-up">
+                Tiada yang dapat kami ungkapkan selain rasa terima kasih yang sebesar-besarnya atas doa, restu, perhatian, dan kehadiran Bapak/Ibu/Saudara/i.
+                <br><br>
+                Semoga segala kebaikan dan doa yang diberikan menjadi keberkahan bagi kita semua.
+            </p>
+
+            <h2 class="couple-name" data-aos="zoom-in">Oktiya & David</h2>
+            <p style="font-size: 0.85rem; font-style: italic; margin-bottom: 15px;" data-aos="fade-up">
+                "Saklawase bebarengan, saling ngugemi, saling nguwatake, nganti tekaning wekasan."
+            </p>
+            
+            <p style="font-family: var(--font-serif); letter-spacing: 2px; font-weight: bold;" data-aos="fade-up">25 • 10 • 2026</p>
+            <img src="https://i.ibb.co.com/HTvgMkLW/1789648955331.png" class="ornament" alt="Ornament" data-aos="zoom-in">
+        </section>
+
+    </div>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: false,
+            mirror: true
+        });
+
+        function openWedding() {
+            document.getElementById('cover-screen').classList.add('hide');
+            var audio = document.getElementById('wedding-audio');
+            audio.play();
+            document.getElementById('music-control').style.display = 'flex';
+            
+            setTimeout(function() {
+                AOS.refresh();
+            }, 500);
+        }
+
+        function toggleAudio() {
+            var audio = document.getElementById('wedding-audio');
+            var icon = document.getElementById('music-icon');
+            if (audio.paused) {
+                audio.play();
+                icon.className = 'fas fa-music';
+            } else {
+                audio.pause();
+                icon.className = 'fas fa-volume-mute';
+            }
+        }
+
+        // Countdown Timer
+        const targetDate = new Date("October 25, 2026 08:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "<p>Acara Telah Berlangsung</p>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
